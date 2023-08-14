@@ -1,1 +1,32 @@
-<p>homepage works!</p>
+<div>
+  <div class="flex flex-row justify-between mx-14 my-4">
+    <h2 class="mx-3">Countries</h2>
+    <div class="flex flex-row gap-2 mx-4">
+      <p>All</p>
+      <p>Asia</p>
+      <p>Europe</p>
+    </div>
+  </div>
+  <div
+    class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 my-6 gap-8 place-items-center mx-14"
+  >
+    <div
+      class="flex flex-row border-2 border-black rounded w-full h-48 sm:h-40 md:h-40 lg:h-40"
+      *ngFor="let perData of worldData"
+    >
+      <div
+        class="w-auto md:w-48 lg:w-48 max-w-48 h-32 mx-4 my-4 overflow-hidden"
+      >
+        <img class="object-contain" src="{{ perData.flag }}" alt="" />
+      </div>
+      <div>
+        <div class="mt-10 px-4 sm:px-2 md:px-4 lg:px-4">
+          <h4 class="font-bold text-l sm:text-xl md:text-xl lg:text-xl">
+            {{ perData.name }}
+          </h4>
+          <p class="text-slate-700">{{ perData.region }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

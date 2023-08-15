@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 
 const user = {
-  name: 'joshua@123',
+  name: 'joshua123@gmail.com',
   password: '12345',
 };
 
@@ -18,7 +18,6 @@ export class ServicesService {
       this._router.navigate(['/home']);
     } else {
       alert('Email or Password Incorrect');
-      
     }
   }
 }

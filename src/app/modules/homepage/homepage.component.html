@@ -38,9 +38,13 @@
       *ngFor="let perData of worldData | filter : filterValue"
     >
       <div
-        class="w-auto md:w-48 lg:w-48 max-w-48 h-32 mx-4 my-4 overflow-hidden"
+        class="w-auto sm:w-auto md:w-48 lg:w-48 max-w-48 h-32 mx-4 my-4 overflow-hidden"
       >
-        <img class="object-contain" src="{{ perData.flag }}" alt="" />
+        <img
+          class="object-contain w-auto sm:w-auto md:w-48 lg:w-48 max-w-48 h-32 mx-4 overflow-hidden"
+          src="{{ perData.flag }}"
+          alt=""
+        />
       </div>
       <div>
         <div class="mt-10 px-4 sm:px-2 md:px-4 lg:px-4">

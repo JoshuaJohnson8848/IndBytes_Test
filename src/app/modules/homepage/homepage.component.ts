@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { ServicesService } from '../services/services.service';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 @Component({
@@ -8,11 +7,10 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./homepage.component.scss'],
 })
 export class HomepageComponent {
+  filterValue: any;
+  active: any;
   worldData: any = [];
-  constructor(
-    private _apiService: ServicesService,
-    private _httpClient: HttpClient
-  ) {}
+  constructor(private _httpClient: HttpClient) {}
 
   ngOnInit() {
     this.fetchResult();
@@ -24,5 +22,10 @@ export class HomepageComponent {
       .subscribe((result: any) => {
         return (this.worldData = result);
       });
+  }
+
+  filter(value: string, event: any) {
+    this.filterValue = event.target.textContent;
+    this.active = value;
   }
 }

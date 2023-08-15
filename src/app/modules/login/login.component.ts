@@ -1,5 +1,11 @@
-import { Component } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
+import { ServicesService } from '../services/services.service';
 
 let user = {
   email: 'joshua@123',
@@ -11,13 +17,24 @@ let user = {
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
   loginForm: any;
+  constructor(
+    private _formBuilder: FormBuilder,
+    private _service: ServicesService
+  ) {}
 
-  constructor() {
-    this.loginForm = new FormGroup({
-      email: new FormControl(),
-      password: new FormControl(),
+  ngOnInit(): void {
+    this.loginForm = this._formBuilder.group({
+      email: ['', Validators.required, Validators.email],
+      password: ['', Validators.required],
     });
+  }
+
+  submit() {
+    this._service.loginCheck(
+      this.loginForm.controls.email.value,
+      this.loginForm.controls.password.value
+    );
   }
 }

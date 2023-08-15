@@ -1,10 +1,33 @@
 <div>
   <div class="flex flex-row justify-between mx-14 my-4">
-    <h2 class="mx-3">Countries</h2>
-    <div class="flex flex-row gap-2 mx-4">
-      <p>All</p>
-      <p>Asia</p>
-      <p>Europe</p>
+    <h2 class="mx-3 font-bold text-lg sm:text-lg md:text-2xl lg:text-2xl">
+      Countries
+    </h2>
+    <div class="flex flex-row gap-8 text-l mx-4">
+      <p
+        (click)="filter('All', $event)"
+        value="all"
+        class="cursor-pointer hover:text-orange-600"
+        [ngClass]="active == 'All' ? 'text-orange-600' : 'text-black'"
+      >
+        All
+      </p>
+      <p
+        (click)="filter('Asia', $event)"
+        value="asia"
+        class="cursor-pointer hover:text-orange-600"
+        [ngClass]="active == 'Asia' ? 'text-orange-600' : 'text-black'"
+      >
+        Asia
+      </p>
+      <p
+        (click)="filter('Europe', $event)"
+        value="europe"
+        class="cursor-pointer hover:text-orange-600"
+        [ngClass]="active == 'Europe' ? 'text-orange-600' : 'text-black'"
+      >
+        Europe
+      </p>
     </div>
   </div>
   <div
@@ -12,7 +35,7 @@
   >
     <div
       class="flex flex-row border-2 border-black rounded w-full h-48 sm:h-40 md:h-40 lg:h-40"
-      *ngFor="let perData of worldData"
+      *ngFor="let perData of worldData | filter : filterValue"
     >
       <div
         class="w-auto md:w-48 lg:w-48 max-w-48 h-32 mx-4 my-4 overflow-hidden"

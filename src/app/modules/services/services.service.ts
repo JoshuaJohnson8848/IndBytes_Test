@@ -1,21 +1,24 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject, Observable, of, throwError } from 'rxjs';
-import { filter, map, switchMap, take, tap } from 'rxjs/operators';
+import { Router } from '@angular/router';
+
+const user = {
+  name: 'joshua@123',
+  password: '12345',
+};
 
 @Injectable({
   providedIn: 'root',
 })
 export class ServicesService {
-  constructor(private _httpClient: HttpClient) {}
+  constructor(private _httpClient: HttpClient, private _router: Router) {}
 
-  getResult() {
-    this._httpClient
-      .get<any>('https://restcountries.com/v2/all?fields=name,region,flag')
-      .subscribe((result: any) => {
-        console.log(result);
-
-        return result;
-      });
+  loginCheck(email: string, password: string) {
+    if (user.name == email && user.password == password) {
+      this._router.navigate(['/home']);
+    } else {
+      alert('Email or Password Incorrect');
+      
+    }
   }
 }

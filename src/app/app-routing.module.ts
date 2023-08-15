@@ -5,17 +5,17 @@ import { HomepageComponent } from './modules/homepage/homepage.component';
 
 const routes: Routes = [
   {
-    path:'login',
-    component:LoginComponent
+    path: '',
+    component: LoginComponent,
   },
   {
-    path:'home',
-    component:HomepageComponent
-  }
+    path: 'home',
+    component: HomepageComponent,
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
